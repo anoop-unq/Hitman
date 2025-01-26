@@ -1,0 +1,279 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline with Vertical Line</title>
+  <link rel="stylesheet" href="bye.css">
+</head>
+<body>
+  <div class="speak">
+  <div class="timeline">
+    
+    <div class="vertical-line"></div>
+
+   
+    <div class="event">
+      <div class="event-date">
+        <span></span>
+        <div>
+       <span id="split"></span>
+      </div>
+    </div>
+    <div class="hi">
+      <div class="event-content">
+        <div class="event-details">
+          <div class="high">
+          <div class="event-icon">&#10004;</div>
+             <h3>The Origins</h3>
+        </div>
+        <p>King Shantanu marries Ganga; Bhishma is born.
+          Shantanu's marriage to Satyavati leads to Bhishma's vow of celibacy.
+          Birth of Pandu, Dhritarashtra, and Vidura.
+          </p>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="event">
+      <div class="event-date">
+        <span></span>
+        <div>
+       <span id="split"></span>
+      </div>
+    </div>
+    <div class="lol">
+      <div class="event-content-1">
+        <div class="event-details">
+          <div class="high">
+            <div class="event-icon">&#128337;</div>
+            <h3 class="heading">The Childhood of Kauravas and Pandavas.</h3>
+          </div>
+         <p>Pandu and Dhritarashtra's children grow up together.
+          Rivalry begins as Duryodhana harbors hatred for the Pandavas.
+          </p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-date">
+        <span></span>
+        <div>
+       <span id="split"></span>
+      </div>
+    </div>
+    <div class="hi-1">
+      <div class="event-content-2">
+        
+        <div class="event-details">
+          <div class="high">
+          <div class="event-icon">&#9774;</div>
+          <h3>Pandavas in Exile
+          </h3>
+        </div>
+          <p>Pandavas lose their kingdom in a dice game with Shakuni.
+            Thirteen years of exile, including one year of incognito living.                 
+        </p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-date">
+        <span></span>
+        <div>
+       <span id="split"></span>
+      </div>
+    </div>
+    <div class="lol">
+      <div class="event-content-3">
+        <div class="event-details">
+          <div class="high">
+          <div class="event-icon">&#10504;</div>
+          <h3>The Kurukshetra War
+          </h3>
+        </div>
+          <p>The epic battle lasts for 18 days.
+            Key events include the Bhagavad Gita discourse, the fall of Bhishma, and Drona’s demise.
+            </p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-date">
+        <span></span>
+        <div>
+       <span id="split"></span>
+      </div>
+    </div>
+    <div class="hi-2">
+      <div class="event-content-4">
+        <div class="event-details">
+          <div class="high">
+          <div class="event-icon">&#12904;</div>
+          <h3>Aftermath and the Rule of Dharma</h3>
+        </div>
+          <p> Pandavas regain the throne and rule justly.
+            The death of Krishna and the onset of Kali Yuga mark the end of the epic.</p>
+        </div>
+      </div>
+      </div>  
+    </div>
+  </div>
+</div>
+ 
+  
+  
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Animation</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #4caf50;
+      color: white;
+    }
+
+    .container {
+      display: grid;
+      gap: 20px;
+      padding: 50px;
+    }
+
+    .box {
+      height: 200px;
+      background: #2196f3;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border-radius: 10px;
+      opacity: 0;
+      margin: 50px;
+      transform: translateY(50px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .roll-in-blurred-left {
+      animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    }
+
+    .slide-in-from-right {
+      animation: slide-in-from-right 0.65s ease-out both;
+    }
+
+    .fade-in {
+      animation: fade-in 1s ease-out both;
+    }
+
+    .zoom-in {
+      animation: zoom-in 0.8s ease-out both;
+    }
+
+    @keyframes roll-in-blurred-left {
+      0% {
+        transform: translateX(-1000px) rotate(-720deg);
+        filter: blur(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0) rotate(0deg);
+        filter: blur(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-in-from-right {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoom-in {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Scroll to See Animations</h1>
+  </header>
+  <section class="container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+    <div class="box">Box 4</div>
+    <div class="box">Box 5</div>
+    <div class="box">Box 6</div>
+  </section>
+  <script>
+    // JavaScript for Scroll Animations
+    document.addEventListener("DOMContentLoaded", function () {
+      var boxes = document.querySelectorAll(".box");
+      var animations = [
+        "roll-in-blurred-left",
+        "slide-in-from-right",
+        "fade-in",
+        "zoom-in"
+      ];
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            // Get the animation based on box index
+            var animation = animations[Array.from(boxes).indexOf(entry.target) % animations.length];
+            entry.target.classList.add(animation);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      boxes.forEach(function (box) {
+        observer.observe(box);
+      });
+    });
+  </script>
+</body>
+</html>
+

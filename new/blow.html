@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shisha's Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        /* Nav Bar  */
+        .nav {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: auto 1fr; 
+    align-items: center; 
+    padding: 20px;
+    font-size: 25px;
+    background-color: transparent; 
+    position: absolute; 
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    transition: background-color 0.3s ease, position 0.3s ease;
+}   
+/* Position of Nav gets Fixed Here */
+.nav.fixed {
+    position: fixed; 
+    background-color: white; /* White background when fixed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+/* Making Nav1 elements to display in one line */
+.nav1 {
+    display: grid;
+    grid-auto-flow: column; 
+    gap: 1%; 
+   justify-content: end;
+    align-items: center; 
+    font-size: 17px;
+    
+}
+
+
+
+        .nav1 a{
+            text-decoration: none;
+            color: black;
+        }
+        .search-bar {
+            display: none;
+            margin-left: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        .search-container {
+            position: relative;
+        }
+        .search-input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        /* Header Image and text container */
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 600px;
+            background-image: url('https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/lady.jpg?id=17');
+            background-size: cover;
+            background-position: center;
+            color: rgb(13, 13, 13);
+            position: relative;
+        
+        }
+        /* Add a dark overlay to enhance text visibility */
+        .image-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        /* Text styles */
+        .info-text {
+            position: relative;
+            z-index: 2; /* Ensure the text appears above the overlay */
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            left: 9%;
+        }
+        .info-text h1 {
+            font-size: 40px;
+            margin: 0 0 10px 0;
+        }
+        .info-text p {
+            font-size: 25px;
+            margin: 3%;
+        }
+        .info-text img{
+            margin: 3%;
+        }
+        /* Details Cards */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 80px;
+            padding: 0;
+            position: relative;
+            top: -30px;
+           
+        }
+        .card {
+    border-radius: 30px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    padding: 30px;
+    text-align: center;
+    height: 300px;
+    overflow: hidden; /* Prevent content from spilling outside the rounded corners */
+    background-clip: border-box; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+
+}
+.card:hover {
+    transform: scale(1.05); 
+}
+        .card h1 {
+            color: #046e86; 
+        }
+      
+        .card a {
+            background-color: #ffffff;
+            border: 1px solid #046e86;
+            
+            border-radius: 30px;
+            color: #0066cc;
+            cursor: pointer;
+            padding: 10px 20px;
+            text-decoration: none;
+            
+        }
+       
+        .card a:hover {
+            background-color: #a7f3f9;
+        }
+        /* About Shisha's Hospital */
+        .container2 {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+      
+        .image-section {
+            flex: 1.2;
+        }
+
+        .image-section img {
+          
+    max-width: 100%;
+    border-radius: 10px;
+            
+
+        }
+
+        .text-section {
+            flex: 1;
+           
+            padding-right: 150px;
+        }
+
+        .text-section h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .text-section h3 {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .text-section p {
+            text-align: justify;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        /* Medical Analysis */
+
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            cursor: pointer;
+            color: #808080; 
+            
+        }
+
+        .features li {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Active State of Medical Analysis list */
+        .features li.active1 {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        .feature-content {
+            margin-top: 20px;
+        }
+
+        .feature-details {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .feature-details p{
+            text-align: justify;
+        }
+
+        .feature-details.active {
+            display: block;
+        }
+        /* Medical Analysis details Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Services We Provide*/
+        .image3{
+            position: relative;
+            width: 100%;
+            height: 30%;
+            margin-top: 5%;
+        
+        }
+        /* SeaGreen Background Image */
+        .image3 img {
+    width: 100%; 
+    height: 800px; 
+    object-fit: cover; /* Ensures the image fills the container without distortion */
+    border-radius: 10px; 
+}
+/* How can we Help You */
+.image3-head {
+    position: absolute;
+    top: 10%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* Offset the element by 50% of its width and height */
+    text-align: center; /* Center text horizontally */
+    color: rgb(13, 13, 13); }
+
+.image3-head h1,
+.image3-head p {
+    margin: 0;
+    padding: 0;
+}
+/* Services Cards */
+        .services-container{
+            position: absolute;
+          left: 20%;
+           top: 20%;
+        }
+        .services-container {
+            width: 60%;
+            /* height: 60%; */
+            background-color: white;
+          
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 5px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px ;
+            
+        }
+       
+        .service:hover {
+    transform: scale(0.9); /* Slightly enlarge the service box */
+
+    background-color: white; 
+}
+
+        .service {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .service img {
+    width: 70px; 
+    height: 70px; 
+    object-fit: contain; /* Ensures the entire image fits inside the container */
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+        .service h3 {
+            margin: 15px 0 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        .service p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        
+        }
+        /* Doctors Profile */
+        .container4{
+            display: grid;
+            grid-template-columns: 50% 50%;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2%;
+            margin: 0; 
+            padding: 0; 
+            padding-bottom: 21%
+        }
+        /* About Doctor */
+        .about-shiri{
+            padding-left: 10%;
+            margin-top: 8%;
+            /* width: 1000px; */
+        }
+        /* Doctor Image */
+        .shiri-photo img{
+            width: 100%;
+            object-fit: cover;
+            height: 90%;
+            
+            /* padding-left: 30%; */
+        }
+        .about-shiri a {
+          #82d8e6
+            background-color: ;
+            border: 1px solid #046e86;
+            border-radius: 30px;
+            color: #012937;
+            cursor: pointer;
+            padding: 15px 20px;
+            text-decoration: none;
+            
+        }
+       
+        .about-shiri a:hover {
+            background-color: #f8ffff;
+        }
+        .container4, .counter-container {
+    overflow: hidden;
+}
+/* No of Doctors and no of Services we provide  */
+        .counter-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 250px;
+  background-color: #eae7e7;
+    position: relative;
+    margin-top: -80px;
+        }
+.counter-item {
+  text-align: center;
+}
+/* Number Count */
+.sh-counter-number-container {
+  position: relative;
+}
+.sh-counter-number-container:hover{
+    transform: scale(1.05); 
+background-color: #eae7e7; 
+}
+.sh-counter-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.underline {
+  width: 100px; 
+  height: 2px;
+  background-color: #1fb0b8;
+  margin: 5px auto 10px; 
+}
+/* Our Special Offers/ Combos */
+.container6{
+            position: relative;
+            width: 100%;
+            height: 30%;
+            margin-top: 5%;
+        
+        }
+        /* Background Image */
+        .container6 img {
+    width: 100%; 
+    height: 800px; 
+    object-fit: cover; /* Ensures the image fills the container without distortion */
+    border-radius: 10px; 
+}
+/* Position of Heading  */
+.offers-head 
+{
+    position: absolute;
+    top: 5%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    color: rgb(13, 13, 13);
+}
+
+.offers-head h1,
+.offers-head p {
+    margin: 0;
+    padding: 0;
+}
+.special-offers {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 0;
+    justify-content: center;
+}
+
+.offer {
+    width: 300px;
+    background-color: #f8f8f8; 
+    border-radius: 2px;
+    padding: 20px;
+    
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #333;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.offer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.offer h1 {
+    font-size: 2.4rem;
+    color:black;
+}
+
+.offer p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.offer a {
+    text-decoration: none;
+    background-color: #050505;
+    color: #ffffff;
+    width: 100px;
+    text-align: center;
+    padding: 10px ;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+}
+
+.offer a:hover {
+    background-color: #046e86;
+}
+
+.offer:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+/* Coloring 1st and 3rd cards */
+.special-offers .offer:nth-child(1),
+.special-offers .offer:nth-child(3) {
+    background-color: #cbf1f7; /* color for card 1 and 3 */
+    height: auto;
+}
+/* Coloring 2nd Card */
+.special-offers .offer:nth-child(2) {
+    background-color: white; /* White for card 2 */
+    height: 400px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+}
+.offer h1 i {
+    font-size: 2rem;
+    vertical-align: middle; 
+}
+/* Frequently Asked questions */
+.container7{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+}
+
+.faq {
+    font-family: Arial, sans-serif;
+    max-width: 600px; 
+    margin: 0 auto;
+    
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+.faq-answer {
+    padding: 15px;
+    display: none;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+    
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-question {
+    background-color: #28a745;
+    color: white;
+}
+
+.container7 a {
+    text-decoration: none;
+    background-color: #6ed2c6;
+    color: #ffffff;
+    width: 100px;
+    text-align: center;
+    padding: 10px ;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 0 auto;
+}
+
+.container7 a:hover {
+    background-color: #046e86;
+}
+.container7-head{
+    margin-left: 12%;
+    margin-top: 5%;
+}
+.container7 h2{
+    font-size: 35px;
+}
+.container7 h1{
+    font-size: 45px;
+}
+/* Contact Details */
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust auto-fit for responsiveness */
+    gap: 30px;
+    background-color: #dfdcdc;
+    padding: 60px 50px;
+    border: 1px solid #afafaf;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20%;
+}
+
+    .contact-item {
+      text-align: center;
+    }
+
+    .contact-item .icon {
+      font-size: 24px;
+      color: rgb(9, 129, 160);
+      margin-bottom: 20px;
+    }
+    .contact-item .icon:hover{
+        transform: scale(1.2); 
+    }
+
+    .contact-item h4 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .contact-item p {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    
+/* Hospital Photos */
+.container9 {
+  width: 60%;
+  height: 50%;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 20px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #080808;
+  background-color: white;
+  
+  font-size: 25px;
+  padding: 0px 2px;
+  position: absolute;
+  bottom: 2px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 18px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+ .active, .dot:hover {
+  background-color: white;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+/* BMI Calculator  */
+.bmicalc {
+      width: 50%;
+      margin: auto;
+      margin-top: 3%;
+      padding: 20px;
+      background-color: #4bbdc5;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .bmicalc h1 {
+      text-align: center;
+    }
+    .bmicalc .form-group {
+      margin-bottom: 15px;
+    }
+    .bmicalc input {
+      padding: 8px;
+      width: 100%;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .bmicalc button {
+      padding: 10px 15px;
+      background-color: #626265;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .bmicalc button:hover {
+      background-color: #383c41;
+    }
+    .bmicalc p {
+      text-align: center;
+      font-weight: bold;
+    }
+
+/* Make An Appointment */
+.appointment-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 0; 
+  margin-top: 3%;
+  align-items: center; 
+  padding: 30px;
+}
+.appointment-image img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.appointment-form {
+  flex: 1;
+  padding-left: 30px;
+}
+
+.appointment-form h2 {
+  margin-bottom: 20px;
+}
+
+.appointment-form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.appointment-form input,
+.appointment-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.appointment-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1fb0b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.appointment-form button:hover {
+  background-color: #08b7b4;
+}
+
+/* Map */
+.map-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.map-container h1 {
+  color: black;
+  margin-bottom: 1rem;
+}
+
+.custom-map iframe {
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* footer */
+.footer {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr;
+      gap: 20px;
+      padding: 80px;
+      background-color: #111;
+    }
+    .footer-section {
+      margin: 0;
+    }
+    .footer-section h3 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      color: whitesmoke;
+    }
+    .footer-section p,
+    .footer-section a {
+      font-size: 0.9em;
+      color: rgb(210, 209, 209);
+      text-decoration: none;
+      text-align: justify;
+    }
+    .footer-section img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .footer-section .news-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .footer-section .news-item p {
+      margin: 0;
+    }
+    .footer-contact p {
+      margin: 5px 0;
+    }
+    .copyright {
+      text-align: center;
+      padding: 20px;
+      color: white;
+      background-color: rgb(110, 109, 109);
+      font-size: 0.8em;
+      
+    }
+    .footer-section img:hover {
+    border: 5px solid #d8dbdb; 
+    border-radius: 80%;     
+    transition: 0.3s;         
+}
+
+
+    </style>
+
+</head>
+<body>
+    <div class="nav">
+        <div ><i class="fa-solid fa-user-doctor fa-beat" style="color: rgb(41, 226, 189);"></i> <b>SHISHA'S HOSPITAL</b></div>
+        <div class="nav1">
+            <div><a href="#image-container">Home</a></div>
+            <div><a href="#container2">About</a></div>
+            <div><a href="#Departments">Departments</a></div>
+            <div><a href="#appointment">Contact</a></div>
+            <div><i class="fa-brands fa-facebook fa-beat"></i></div>
+            <div><i class="fa-brands fa-twitter fa-beat"></i></div>
+            <div class="search-container">
+                <!-- Search Icon -->
+                <i class="fa-solid fa-magnifying-glass fa-beat" style="cursor: pointer;" onclick="toggleSearchBar()"></i>
+                <!-- Search Bar -->
+                <input type="text" class="search-bar search-input" id="searchInput" placeholder="Search..." />
+            </div>
+        </div>
+    </div>
+
+    <!-- Image and Text Container -->
+    <div class="image-container" id="image-container" >
+        <div class="info-text">
+            <div data-aos="fade-right" data-aos-duration="2000">
+            <h1>Empowering Lives Through Expert Medical Care</h1>
+            <p>Your Health, Our Happiness</p>
+            <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/icons2.png">
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <!-- Emergency Service Card -->
+        <div class="card" style="background-color: #a7f3f9;">
+            <h1>1-800-600-380</h1>
+            <h3>EMERGENCY SERVICE</h3>
+            <p>Our emergency services are available 24/7, delivering quick and expert care for all urgent medical needs. With advanced technology and a dedicated team, we ensure you receive immediate attention and efficient treatment when it matters most.</p>
+            <br><br><a href="#">Call Now</a>
+        </div>
+
+        <!-- Appointment Card -->
+        <div class="card" style="background-color: #c0fbff;">
+        
+            <h3 style="text-align: center; line-height: 2;"><i class="fa-solid fa-calendar-days fa-2x" style="margin-right: 10px; color: #046e86;"></i><br>DO YOU WANT TO MAKE AN APPOINTMENT?</h3>
+            <p>Scheduling your appointment is easy! Our team is ready to assist you with booking a convenient time for your consultation. Click below to make an appointment now.</p>
+            <br><br><a href="#">Book Now</a>
+        </div>
+
+        <!-- Opening Hours Card -->
+        <div class="card" style="background-color: #a7f3f9;">
+            
+            <h3 style="text-align: center; line-height: 2;"> <i class="fa-solid fa-clock fa-2x" style="margin-right: 10px; color: #046e86;"></i><br>OPENING HOURS</h3>
+            <p>Monday to Friday: 9:00 AM - 5:00 PM<br>
+                Saturday & Sunday: 10:00 AM - 3:00 PM</p>
+                <br><br><a href="#">Contact Us</a>
+        </div>
+    </div>
+    <!-- About Shisha's Hospital -->
+    <div data-aos="zoom-out-up">
+    <div class="container2" id="container2" >
+        
+            <div class="image-section">
+                <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/Layer-1200.png" alt="Medical Equipment">
+            </div>
+        
+        
+        <div class="text-section">
+            <h1>About Shisha's Hospital</h1>
+            <h3>Professional Care</h3>
+            <p>Shisha’s Hospital is committed to providing exceptional healthcare with a focus on patient care and comfort.</p>
+            <p>Our team of experienced doctors, nurses, and medical professionals is dedicated to delivering the highest standard of medical services across a wide range of specialties.</p>
+            <p>With state-of-the-art facilities and compassionate care, we strive to improve the health and well-being of our community.</p>
+<!-- Medical Analysis -->
+            <div class="feature-container">
+                <ul class="features">
+                    
+                    <li  class="active1" data-target="consulting">Medical Consulting</li>
+                    <div id="consulting" class="feature-details active">
+                        <h3>Medical Consulting</h3>
+                        <p>Our expert medical consultants offer personalized guidance and treatment plans tailored to your unique health needs. With years of experience in a variety of specialties, our doctors provide comprehensive consultations to help you make informed decisions about your health. Whether you’re seeking advice for a specific condition or a general health check-up, our team is here to provide trusted medical expertise.
+
+                        </p>
+                    </div>
+                    <li data-target="laboratory">Laboratory Analysis</li>
+                    <div id="laboratory" class="feature-details">
+                        <h3>Laboratory Analysis</h3>
+                        <p>Our state-of-the-art laboratory offers accurate and reliable diagnostic testing to support your healthcare needs. With advanced equipment and a skilled team, we provide a wide range of tests, including blood work, imaging, and other specialized analyses, ensuring timely and precise results for effective treatment plans.
+
+                        </p>
+                    </div>
+                    <li data-target="diagnostic">Diagnostic Clinic</li>
+                    <div id="diagnostic" class="feature-details">
+                        <h3>Diagnostic Clinic</h3>
+                        <p>Our Diagnostic Clinic is equipped with the latest technology to provide accurate and quick assessments for a wide range of health conditions. From routine screenings to advanced diagnostic tests, we offer comprehensive services to help diagnose and monitor your health, ensuring timely and effective treatment.</p>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Services we provide in Shisha's Hospital -->
+    <div class="image3" id="Departments">
+        <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/Rectangle-827-copy-2.jpg?id=72">
+        <div class="image3-head"><h1>How we can help you</h1>
+        <p>READ MORE ABOUT OUR SERVICES </p></div>
+    <div class="services-container">
+        <div class="service">
+            <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/icon3_0004_%EF%81%AE.jpg" alt="Ophthalmology">
+            <h3>Ophthalmology</h3>
+            <p>Comprehensive eye care, including routine eye exams, treatments for eye diseases, and advanced surgeries for vision correction.</p>
+        </div>
+        <div class="service">
+            <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/icon3_0005_%EF%88%9E.jpg" alt="Cardiology">
+            <h3>Cardiology</h3>
+            <p>Expert care for heart-related conditions, including diagnostic tests, management of cardiovascular diseases, and preventive treatments.</p>
+        </div>
+        <div class="service">
+            <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/icon3_0003_%EF%83%B0.jpg" alt="Dentistry">
+            <h3>Dentistry</h3>
+            <p>Comprehensive dental care, including routine check-ups, preventive treatments, and advanced procedures for oral health.</p>
+        </div>
+        <div class="service">
+            <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/icon3_0002_%EF%89%8E.jpg" alt="Laboratory">
+            <h3>Laboratory</h3>
+            <p>Accurate and timely diagnostic testing, including blood tests, imaging, and other specialized analyses to support your treatment.</p>
+        </div>
+        <div class="service">
+            <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/icon3_0001_%EF%83%B1.jpg" alt="Pediatrics">
+            <h3>Pediatrics</h3>
+            <p>Compassionate care for children, from routine check-ups to treatment of common childhood illnesses and chronic conditions.</p>
+        </div>
+        <div class="service">
+            <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/icon3_0000_%EF%88%9D.jpg" alt="Naturopathy">
+            <h3>Naturopathy</h3>
+            <p>Holistic treatment options focusing on natural healing, including nutrition counseling, herbal treatments, and wellness therapies.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Doctors Profile -->
+<div data-aos="zoom-in-left" data-aos-duration="10000">
+<div class="container4" >
+    <div class="about-shiri">
+        <h1>Dr. Shirisha Palusa</h1>
+        <h3 style="color: #0cadb9;">Professional Naturopath</h3>
+        <p>Dr. Palusa Shirisha is a highly respected and experienced Naturopath, with extensive training and education in the field of Naturopathy. Her passion for natural healing and holistic care is reflected in her commitment to improving the health and well-being of her patients. As the founder and owner of this hospital, Dr. Shirisha brings a wealth of knowledge and expertise, ensuring that each patient receives the highest standard of care through personalized, natural treatment approaches.
+
+        </p>
+        <br>
+        <br>
+        <a href="#">View All Doctors</a>
+
+    </div>
+    <div class="shiri-photo">
+        <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/Layer-1186-copy.jpg">
+    </div>
+</div>
+</div>
+<!-- No of Doctors and No of Services We Provide -->
+<div class="counter-container">
+  <div class="counter-item">
+    <div class="sh-counter-number-container">
+      <div class="sh-counter-number sh-counter-animate size-custom" data-target="48">0</div>
+      <div class="underline"></div>
+    </div>
+    <p>Certified Doctors</p>
+  </div>
+  <div class="counter-item">
+    <div class="sh-counter-number-container">
+      <div class="sh-counter-number sh-counter-animate size-custom" data-target="56">0</div>
+      <div class="underline"></div>
+    </div>
+    <p>Medical Services</p>
+  </div>
+  <div class="counter-item">
+    <div class="sh-counter-number-container">
+      <div class="sh-counter-number sh-counter-animate size-custom" data-target="18">0</div>
+      <div class="underline"></div>
+    </div>
+    <p>Different Affiliates</p>
+  </div>
+  <div class="counter-item">
+    <div class="sh-counter-number-container">
+      <div class="sh-counter-number sh-counter-animate size-custom" data-target="102">0</div>
+      <div class="underline"></div>
+    </div>
+    <p>Offered Programs</p>
+  </div>
+</div>
+<!-- Special Offers and Combos we have -->
+<div class="container6">
+    <img src="https://jevelin.shufflehound.com/medical/wp-content/uploads/sites/23/2018/09/BG.jpg?id=7">
+    <div class="offers-head"><h1>Our Special Offers</h1>
+    <p>START TO BE HEALTHY TODAY </p></div>
+    <div class="special-offers">
+        <div class="offer">
+            <h3>Allergy Check</h3>
+            <h1><i class="fa-solid fa-indian-rupee-sign"></i> 399</h1>
+            <p>5 treatments</p><br><br>
+            <p>Allergy Test</p>
+            <p>Consultation</p>
+            <p>Treatments</p>
+            <p>10 Procedures</p>
+            <p>Test Results</p>
+            <br>
+            <a href="#">Get now</a>
+        </div>
+
+        <div class="offer">
+            <h3>Eye Checkup</h3>
+            <h1><i class="fa-solid fa-indian-rupee-sign"></i> 299</h1>
+            <p>3 treatments</p><br><br>
+            <p>Refraction</p>
+            <p>Retinal Examination</p>
+            <p>External Examinations</p>
+            <p>9 Procedures</p>
+            <p>Full Closure</p>
+            <br>
+            <a href="#">Get now</a>
+        </div>
+
+        <div class="offer">
+            <h3>Dental Care</h3>
+            <h1><i class="fa-solid fa-indian-rupee-sign"></i> 499</h1>
+            <p>6 treatments</p><br><br>
+            <p>Gum Care</p>
+            <p>Treatments</p>
+            <p>6 Procedures</p>
+            <p>Oral Hygiene</p>
+            <p>Full Closure</p>
+            <br>
+            <a href="#">Get now</a>
+        </div>
+    </div>
+</div>
+<!-- Frequently asked questions -->
+<div data-aos="zoom-in-up">
+<div class="container7">
+    <div class="container7-head"><h2>Frequently Asked</h1>
+        <h1>Questions</h1><br><br>
+        <a href="#">View more</a>
+    
+    </div>
+
+<div class="faq">
+    <div class="faq-item active">
+      <button class="faq-question">How to make an appointment?</button>
+      <div class="faq-answer">
+        You can either call our hospital directly at 1-800-600-380, or you can easily book your consultation online through our website by filling out the appointment form.
+       
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What will my insurance cover for me?</button>
+      <div class="faq-answer">
+        Your insurance coverage will vary depending on your plan, but typically, most health insurance policies cover a range of medical services, including consultations with doctors, diagnostic tests, surgeries, and emergency care.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do Any Health Cards Apply?</button>
+      <div class="faq-answer">
+        Yes, we accept a variety of health cards and insurance plans. Depending on your health card or insurance provider, different treatments and services may be covered.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How can I make a home appointment?</button>
+      <div class="faq-answer">
+        If you prefer medical care at home, we offer home appointment services to provide convenience and comfort. To schedule a home visit, simply call our hospital at 1-800-600-380, or request an appointment online through our website.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Our Hospital Details -->
+<div class="contact-container">
+    <div class="contact-item">
+            <i  class="fas fa-map-marker-alt icon"></i> <!-- Location Icon -->
+      <h4>ADDRESS</h4>
+      <p>Road No-3, Hasthinapuram, Hyderabad</p>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-clock icon"></i> <!-- Clock Icon -->
+      <h4>WORK HOURS</h4>
+      <p>Mon – Fri : 10AM – 10PM</p>
+      <p>Sat  –  Sun : 10AM  –  2PM</p>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-envelope icon"></i> <!-- Email Icon -->
+      <h4>E-MAIL</h4>
+      <p>shisha's hospital@gmail.com</p>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-phone icon"></i> <!-- Phone Icon -->
+      <h4>TELEPHONE</h4>
+      <p>1-800-600-380</p>
+    </div>
+  </div>
+  <!-- Hospital Photos -->
+  <div class="container9">
+
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="images/_6e04a8b1-0b22-456b-a3a0-35d087243512.jpg" style="width:100%">
+      <div class="text">Doctors in action</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="images/_6a87f14b-7fc9-4689-9104-9542c64f7241.jpg" style="width:100%">
+      <div class="text">Medical Technologies</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="images/_6f11653c-b7de-4b2b-b049-7fe2ab2992f6.jpg" style="width:100%">
+      <div class="text">Lab</div>
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+
+<!-- Health Calculator -->
+
+    <div class="bmicalc">
+      <h1>Health Calculator</h1>
+  
+      <!-- BMI Calculator -->
+      <div class="form-group">
+        <h3>BMI Calculator</h3>
+        <input type="number" id="weight" placeholder="Enter weight in kg">
+        <input type="number" id="height" placeholder="Enter height in meters">
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <p id="bmiResult"></p>
+      </div>
+    </div>
+   
+    
+<!-- Make Appointment Here -->
+
+    <div class="appointment-container" id="appointment">
+        <div class="appointment-image">
+          <img src="images/10.webp" alt="Hospital Image">
+        </div>
+        <div class="appointment-form">
+          <h2>Book an Appointment</h2>
+          <form>
+            <div>
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+      
+            <div>
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+      
+            <div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+      
+            <div>
+              <label for="appointment-date">Preferred Appointment Date</label>
+              <input type="date" id="appointment-date" name="appointment-date" required>
+            </div>
+      
+            <div>
+              <label for="department">Select Department</label>
+              <select id="department" name="department" required>
+                <option value="general">General Medicine</option>
+                <option value="naturopathy">Naturopathy</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="dentistry">Dentistry</option>
+                <option value="ophthalmology">Ophthalmology</option>
+                <option value="pediatrics">Pediatrics</option>
+              </select>
+            </div>
+      
+            <button type="submit">Book Appointment</button>
+          </form>
+        </div>
+      </div>
+    
+    <!-- Map -->
+    <div class="map-container">
+      <h1>Find Us Here</h1>
+      <div class="custom-map">
+        <!-- Google Maps iframe -->
+        <iframe 
+          src="https://www.google.com/maps/place/Shisha's+Hospital/@17.3277806,78.5495069,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcba3005c558d3f:0x76cf1966521e85aa!8m2!3d17.3277755!4d78.5520818!16s%2Fg%2F11wvckjdww?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-section">
+        <h3>Important Information</h3>
+        <p>Shisha's Hospital is a trusted center for natural healing, specializing in advanced Naturopathy treatments for holistic well-being. We are committed to providing personalized care, combining modern techniques with natural therapies to promote a healthier lifestyle.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Latest News</h3>
+        <div class="news-item">
+          <img src="images/producing-news.jpg" alt="News">
+          <p><strong>NEWS : </strong> Welcome to our new building</p>
+        </div>
+        <div class="news-item">
+          <img src="images/Balanced_Diet_Basics1717757874.webp" alt="Diet">
+          <p><strong>DIET : </strong> Healthier diet for better future</p>
+        </div>
+      </div>
+      <div class="footer-contact footer-section">
+        <h3>Contact</h3>
+        <p>📍 Road No-3, Hasthinapuram, Hyderabad</p>
+        <p>📞 1-800-600-380</p>
+        <p>📧 Shisha's hospital @gmail.com</p>
+        <p>🕒 Mon. – Fri. 10AM – 10PM</p>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="copyright">
+      Copyright © 2020 Shisha's Hospital. All rights reserved.
+    </div>
+    
+
+    <script>
+      // Making nav Fixed Using Js
+        window.addEventListener('scroll', function () {
+        const nav = document.querySelector('.nav');
+        const imageContainerHeight = document.querySelector('.image-container').offsetHeight;
+
+        if (window.scrollY > imageContainerHeight) {
+            // Add the 'fixed' class when the user scrolls past the image container
+            nav.classList.add('fixed');
+        } else {
+            // Keep the navbar fixed to the top with a white background when scrolling up
+            if (window.scrollY === 0) {
+                nav.classList.remove('fixed'); // Removes the 'fixed' class at the very top
+            } else {
+                nav.classList.add('fixed');
+            }
+        }
+    });
+    //Nav Search Bar
+        function toggleSearchBar() {
+            var searchBar = document.getElementById('searchInput');
+            if (searchBar.style.display === 'none' || searchBar.style.display === '') {
+                searchBar.style.display = 'block';
+            } else {
+                searchBar.style.display = 'none';
+            }
+        }
+        // Medical Analysis 
+        document.addEventListener('DOMContentLoaded', () => {
+            const featureItems = document.querySelectorAll('.features li');
+            const featureDetails = document.querySelectorAll('.feature-details');
+
+            featureItems.forEach((item) => {
+                item.addEventListener('click', () => {
+                    featureItems.forEach((li) => li.classList.remove('active'));
+                    item.classList.add('active');
+
+                    featureDetails.forEach((detail) => detail.classList.remove('active'));
+                    const target = item.getAttribute('data-target');
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+        });
+
+// Number Count of - No of Doctors and No of Services etc
+        document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".sh-counter-number");
+  const counterContainer = document.querySelector(".counter-container");
+
+  // Function to animate all counters
+  const animateCounters = () => {
+    counters.forEach((counter) => {
+      const target = +counter.getAttribute("data-target");
+      const increment = Math.ceil(target / 200); // Smaller increment for slower counting
+
+      const updateCounter = () => {
+        const current = +counter.innerText;
+
+        if (current < target) {
+          counter.innerText = current + increment;
+          setTimeout(updateCounter, 30); // Increase timeout duration for slower speed
+        } else {
+          counter.innerText = target;
+        }
+      };
+
+      updateCounter();
+    });
+  };
+
+  // Use Intersection Observer to detect when counter-container is in view
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(counterContainer); // Stop observing after animation starts
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the counter-container is visible
+  );
+
+  observer.observe(counterContainer);
+});
+// Frequently Asked Questions
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        const allFaqItems = document.querySelectorAll('.faq-item');
+
+        // Close all FAQ items except the clicked one
+        allFaqItems.forEach(item => {
+            if (item !== faqItem) {
+                item.classList.remove('active');
+            }
+        });
+
+        // Toggle the clicked FAQ item
+        faqItem.classList.toggle('active');
+    });
+});
+
+// Hospital Photos
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+// Integrating Animations
+AOS.init({
+    duration: 3000, // Animation duration in milliseconds
+    once: true,     // Animation happens only once while scrolling
+  });
+// BMI Calculator
+  function calculateBMI() {
+      const weight = parseFloat(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value);
+
+      if (weight > 0 && height > 0) {
+        const bmi = weight / (height * height);
+        let category = '';
+        if (bmi < 18.5) {
+          category = 'Underweight';
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+          category = 'Normal weight';
+        } else if (bmi >= 25 && bmi < 29.9) {
+          category = 'Overweight';
+        } else {
+          category = 'Obese';
+        }
+        document.getElementById("bmiResult").textContent = Your BMI is ${bmi.toFixed(2)}. Category: ${category};
+      } else {
+        document.getElementById("bmiResult").textContent = "Please enter valid values.";
+      }
+    }
+    </script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>

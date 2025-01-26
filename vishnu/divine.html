@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scrolling</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .section {
+    
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            background-repeat: no-repeat;
+            position: relative; 
+        }
+        .section1 {
+            height: 100vh;
+            background-image: url("./vishnu11.webp");
+        }
+        .section2 {
+            height: 100vh;
+            background-image: url("./V1matsya.jpg.webp");
+        }
+        .section3 {
+            height: 100vh;
+            background-image: url("./V2kurma.jpg.webp");
+        }
+        .section4 {
+            height: 100vh;
+            background-image: url("./varaha.jpg");
+        }
+        .section5 {
+            height: 100vh;
+            background-image: url("./V4narasimha.webp");
+        }
+        .section6 {
+            height: 100vh;
+            background-image: url("./a6e3b92b16d13a0c156bc9a53c0dab5d.jpg");
+        }
+        .section7 {
+            height: 100vh;
+            background-image: url("./V6parushurama.jpg.webp");
+        }
+        .section8 {
+            height: 100vh;
+            background-image: url("./V8Ram.webp");
+        }
+        .section9 {
+            height: 100vh;
+            background-image: url("./V9krishna.webp");
+        }
+        .section10 {
+            height: 100vh;
+            background-image: url("./budha.jpg");
+        }
+        .section11 {
+            height: 100vh;
+            background-image: url("./kalki.jpg");
+        }
+        .text-dream, .text-paris, .text-newyork,.text-tokyo, .text-venice, .text-cairo, .text-sydney {
+            position: absolute;
+            top: 10%; 
+            left: 25%;
+            transform: translateX(-50%);
+            color: rgb(9, 5, 246);
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+        }
+        @media screen and (max-width: 768px) {
+            .section {
+                height: 100vh; 
+            }
+            .text-dream, .text-paris, .text-newyork, .text-tokyo, .text-venice, .text-cairo, .text-sydney {
+                font-size: 2.1rem; 
+                max-width: 500px;
+            }
+        }
+
+        
+        @media screen and (max-width: 480px) {
+            .section {
+                height: 100vh; 
+               
+            }
+            .text-dream, .text-paris, .text-newyork, .text-tokyo, .text-venice, .text-cairo, .text-sydney {
+                font-size: 2rem; 
+                top: 15%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="section section1">
+        <div class="text-dream">Lord Vishnu Avatars</div>
+    </div>
+    <div class="section section2">
+        <div class="text-paris">Matsya Avatar</div>
+    </div>
+    <div class="section section3">
+        <div class="text-newyork">Kurma Avatar</div>
+    </div>
+    <div class="section section4">
+        <div class="text-tokyo">Varaha Avatar</div>
+    </div>
+    <div class="section section5">
+        <div class="text-venice ">Narasimha Avatar</div>
+    </div>
+    <div class="section section6">
+        <div class="text-cairo">Vamana Avatra</div>
+    </div>
+    <div class="section section7">
+        <div class="text-sydney">Parushurama Avatar</div>
+    </div>
+    <div class="section section8">
+        <div class="text-sydney">Rama Avatar</div>
+    </div>
+    <div class="section section9">
+        <div class="text-sydney">Krishna Avatar</div>
+    </div>
+    <div class="section section10">
+        <div class="text-sydney">Buddha Avatar</div>
+    </div>
+    <div class="section section11">
+        <div class="text-sydney">Kalki Avatar</div>
+    </div>
+    
+</body>
+</html>
